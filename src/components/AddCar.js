@@ -3,12 +3,6 @@ import { addCar } from "../redux/car/carActions";
 import { connect } from "react-redux";
 import { render } from "@testing-library/react";
 
-const initialState = {
-  marque: "",
-  model: "",
-  color: "",
-  horsePower: "",
-}
 
 class AddCar extends Component  {
 
