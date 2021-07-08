@@ -72,7 +72,7 @@ class ListCars extends Component {
 const mapStateToProps = (state) => {
   
   return {
-    listCars: state.listCars
+    listCars: state.car.listCars
   };
 };
 

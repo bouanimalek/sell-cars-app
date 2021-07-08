@@ -94,8 +94,8 @@ class AddCar extends Component  {
                 <button className="btn btn-success" type="submit">
                   <i className="fa fa-save"></i> Valider
                 </button>
-                <button className="btn btn-secondary text-white mb-1">
-                  <i className="fa fa-undo" onClick={() => this.props.history.push("/listCars")}></i> Cancel
+                <button className="btn btn-secondary text-white mb-1" onClick={() => this.props.history.push("/listCars")}>
+                  <i className="fa fa-undo" ></i> Cancel
                 </button>
               </div>
             </form>
