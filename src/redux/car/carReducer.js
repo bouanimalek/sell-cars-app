@@ -14,13 +14,14 @@ const initialState = {
 const carReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CAR:
+      
     const  newCar =  {
          marque: action.payload.marque,
          model: action.payload.model,
          color: action.payload.color,
          horsePower: action.payload.horsePower
       };
-      
+
       state.listCars.push(newCar);
       localStorage.setItem('cars', JSON.stringify(state.listCars));
 

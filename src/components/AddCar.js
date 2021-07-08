@@ -42,6 +42,7 @@ class AddCar extends Component  {
     e.preventDefault();
     console.log(this.state)
     this.props.addCar(this.state)
+    this.props.history.push("/listCars")
   };
  
 
@@ -113,7 +114,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addCar: (val) => dispatch(addCar(val)),
+    addCar: (car) => dispatch(addCar(car)),
   };
 };
 

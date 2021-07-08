@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
 class ListCars extends Component {
@@ -19,16 +19,34 @@ class ListCars extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{this.props.marque}</td>
+                
+                  {
+                    this.props.listCars.map((car, index) => {
+                      return(
+                        <Fragment key={index}>
+                          <tr>
+                        <td>{car.marque}</td>
+                        <td>{car.model}</td>
+                        <td>{car.color}</td>
+                        <td>{car.horsePower}</td>
+                        <td>
+                    <button className="btn btn-info text-white "><i className="fa fa-edit"></i> Edit</button>
+                    <button className="btn btn-danger"><i className="fa fa-trash"></i> Delete</button>
+                  </td>
+                        </tr>
+                        </Fragment>
+                      )
+                    })
+                  }
+                  {/* <td>{this.props.marque}</td>
                   <td>{this.props.model}</td>
                   <td>{this.props.color}</td>
                   <td>{this.props.horsePower}</td>
                   <td>
                     <button className="btn btn-info text-white "><i className="fa fa-edit"></i> Edit</button>
                     <button className="btn btn-danger"><i className="fa fa-trash"></i> Delete</button>
-                  </td>
-                </tr>
+                  </td> */}
+                
               </tbody>
             </table>
           </div>
@@ -41,10 +59,7 @@ class ListCars extends Component {
 const mapStateToProps = (state) => {
   
   return {
-    marque: state.marque,
-    model: state.model,
-    color: state.color,
-    horsePower: state.horsePower,
+    listCars: state.listCars
   };
 };
 
