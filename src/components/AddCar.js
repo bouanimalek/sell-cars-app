@@ -37,6 +37,7 @@ class AddCar extends Component  {
     })
   }
 
+  
 
    handleSubmit = (e) => {
     e.preventDefault();
@@ -94,7 +95,7 @@ class AddCar extends Component  {
                   <i className="fa fa-save"></i> Valider
                 </button>
                 <button className="btn btn-secondary text-white mb-1">
-                  <i className="fa fa-undo"></i> Cancel
+                  <i className="fa fa-undo" onClick={() => this.props.history.push("/listCars")}></i> Cancel
                 </button>
               </div>
             </form>

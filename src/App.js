@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import Menu from "./components/Menu";
 import AddCar from "./components/AddCar";
 import ListCars from "./components/ListCars";
+import EditCar from "./components/EditCar";
 import { Provider } from "react-redux";
 import store from './redux/store'
 
@@ -15,6 +16,7 @@ function App() {
           <Redirect to="/listCars" />
         </Route>
         <Route path="/listCars" component={ListCars} />
+        <Route path="/editCar/:idCar" component={EditCar}/>
         <Route path="/addCar" component={AddCar} />
       </BrowserRouter>
     </Provider>

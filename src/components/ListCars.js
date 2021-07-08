@@ -1,9 +1,22 @@
 import React, { Component, Fragment } from "react";
+import { addCar } from "../redux/car/carActions";
 import { connect } from "react-redux";
 
 class ListCars extends Component {
+
+  handleDetail = (index) => {
+    this.props.history.push(`/editCar/${index}`)
+ }
+
+ handleDelete = (index) => {
+  const cars = JSON.parse(localStorage.getItem("cars") || "[]");
+  console.log(index)
+  cars.splice(index, 1);
+  localStorage.setItem("cars", JSON.stringify(cars));
+};
+
   render() {
-    console.log(this.props.marque);
+    
     return (
       <div className="container-fluid my-5">
         <div className="row">
@@ -30,8 +43,8 @@ class ListCars extends Component {
                         <td>{car.color}</td>
                         <td>{car.horsePower}</td>
                         <td>
-                    <button className="btn btn-info text-white "><i className="fa fa-edit"></i> Edit</button>
-                    <button className="btn btn-danger"><i className="fa fa-trash"></i> Delete</button>
+                    <button className="btn btn-info text-white "><i className="fa fa-edit" onClick={this.handleDetail.bind(this, index)}></i> Edit</button>
+                    <button className="btn btn-danger"><i className="fa fa-trash" onClick={this.handleDelete.bind(this, index)}></i> Delete</button>
                   </td>
                         </tr>
                         </Fragment>
@@ -60,6 +73,12 @@ const mapStateToProps = (state) => {
   
   return {
     listCars: state.listCars
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addCar: (car) => dispatch(addCar(car)),
   };
 };
 
