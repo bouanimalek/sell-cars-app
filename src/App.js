@@ -1,15 +1,23 @@
 import "./App.css";
-import { BrowserRouter,Route } from "react-router-dom";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import Menu from "./components/Menu";
 import AddCar from "./components/AddCar";
+import ListCars from "./components/ListCars";
+import { Provider } from "react-redux";
+import store from './redux/store'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Menu />
-      <Route exact path="/" component={AddCar} /> 
-      <Route path="/addCar" component={AddCar}/>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Menu />
+        <Route exact path="/">
+          <Redirect to="/listCars" />
+        </Route>
+        <Route path="/listCars" component={ListCars} />
+        <Route path="/addCar" component={AddCar} />
+      </BrowserRouter>
+    </Provider>
   );
 }
 

@@ -6,7 +6,7 @@ function Menu() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/home">
+          <NavLink className="navbar-brand" to="/">
             Cars Application
           </NavLink>
           <button
@@ -28,7 +28,7 @@ function Menu() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/home">
+                <NavLink className="nav-link" to="/listCars">
                   List Voiture
                 </NavLink>
               </li>
