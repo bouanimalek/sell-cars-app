@@ -21,12 +21,13 @@ class ListCars extends Component {
               <tbody>
                 <tr>
                   <td>{this.props.marque}</td>
-
                   <td>{this.props.model}</td>
-
                   <td>{this.props.color}</td>
-                  
                   <td>{this.props.horsePower}</td>
+                  <td>
+                    <button className="btn btn-info text-white "><i className="fa fa-edit"></i> Edit</button>
+                    <button className="btn btn-danger"><i className="fa fa-trash"></i> Delete</button>
+                  </td>
                 </tr>
               </tbody>
             </table>
