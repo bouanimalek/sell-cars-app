@@ -43,8 +43,8 @@ class ListCars extends Component {
                         <td>{car.color}</td>
                         <td>{car.horsePower}</td>
                         <td>
-                    <button className="btn btn-info text-white "><i className="fa fa-edit" onClick={this.handleDetail.bind(this, index)}></i> Edit</button>
-                    <button className="btn btn-danger"><i className="fa fa-trash" onClick={this.handleDelete.bind(this, index)}></i> Delete</button>
+                    <button className="btn btn-info text-white " onClick={this.handleDetail.bind(this, index)}><i className="fa fa-edit" ></i> Edit</button>
+                    <button className="btn btn-danger" onClick={this.handleDelete.bind(this, index)}><i className="fa fa-trash" ></i> Delete</button>
                   </td>
                         </tr>
                         </Fragment>
