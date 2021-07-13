@@ -1,6 +1,4 @@
-import { ADD_USER, LOGIN_USER } from "./userTypes";
-
-
+import { ADD_USER, LOGIN_USER, LOGOUT_USER } from "./userTypes";
 
 const initialState = {
   listUsers: JSON.parse(localStorage.getItem("users") || "[]"),
@@ -10,7 +8,8 @@ const initialState = {
     password: "",
     isLoggedIn: false,
   },
-  wrongUsernameOrPassword: false
+  wrongUsernameOrPassword: false,
+  isAuthentificated: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -37,17 +36,31 @@ const userReducer = (state = initialState, action) => {
       });
       if (indexLoggedUser !== -1) {
         // 4. change the isLoggedIn status to true
-        console.log(indexLoggedUser)
+        console.log(indexLoggedUser);
         users[indexLoggedUser].isLoggedIn = true;
         state.listUsers = users;
         localStorage.setItem("users", JSON.stringify(users));
         // 5. navigate to list todo
-       // router.push("/listCars");
-       state.wrongUsernameOrPassword = false;
+        // router.push("/listCars");
+        state.wrongUsernameOrPassword = false;
+        state.isAuthentificated = true;
       } else {
         state.wrongUsernameOrPassword = true;
       }
-    return state
+      return state;
+
+    case LOGOUT_USER:
+      state.listUsers.map((user) => {
+        const newUser = user;
+        newUser.isLoggedIn = false;
+        return newUser;
+      });
+      localStorage.setItem("users", JSON.stringify(state.listUsers));
+
+      state.isAuthentificated = false;
+
+     return state;
+
     default:
       return state;
   }
