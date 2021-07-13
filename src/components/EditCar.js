@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { addCar } from "../redux/car/carActions";
+import { addCar, editCar } from "../redux/car/carActions";
 
 const initialtState = {
     car: {
@@ -61,10 +61,11 @@ export class EditCar extends Component {
         handleSubmit = (e) => {
          e.preventDefault();
          const id = this.props.match.params.idCar;
-         cars.splice(id, 1, this.state.car)
-         localStorage.setItem('cars', JSON.stringify(cars))
+        //  cars.splice(id, 1, this.state.car)
+        //  localStorage.setItem('cars', JSON.stringify(cars))
+        this.props.editCar(id, this.state.car)
          this.props.history.push('/listCars')
-         this.props.addCar(cars)
+         
         }
     
     render() {
@@ -139,6 +140,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
       addCar: (car) => dispatch(addCar(car)),
+      editCar: (index, car) => dispatch(editCar(index, car))
     };
   };
 

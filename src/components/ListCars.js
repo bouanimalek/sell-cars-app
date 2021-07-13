@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { addCar } from "../redux/car/carActions";
+import { addCar, deleteCar } from "../redux/car/carActions";
 import { connect } from "react-redux";
 
 class ListCars extends Component {
@@ -9,10 +9,11 @@ class ListCars extends Component {
  }
 
  handleDelete = (index) => {
-  const cars = JSON.parse(localStorage.getItem("cars") || "[]");
-  console.log(index)
-  cars.splice(index, 1);
-  localStorage.setItem("cars", JSON.stringify(cars));
+  // const cars = JSON.parse(localStorage.getItem("cars") || "[]");
+  // console.log(index)
+  // cars.splice(index, 1);
+  // localStorage.setItem("cars", JSON.stringify(cars));
+  this.props.deleteCar(index);
 };
 
   render() {
@@ -79,7 +80,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addCar: (car) => dispatch(addCar(car)),
+    deleteCar: (index) => dispatch(deleteCar(index))
   };
 };
 
-export default connect(mapStateToProps)(ListCars);
+export default connect(mapStateToProps, mapDispatchToProps)(ListCars);
