@@ -5,6 +5,7 @@ import AddCar from "./components/AddCar";
 import ListCars from "./components/ListCars";
 import EditCar from "./components/EditCar";
 import Login from "./components/Login";
+import Login_ from "./components/Login_";
 import { Provider } from "react-redux";
 import store from './redux/store'
 
@@ -13,7 +14,8 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Menu />
-        <Route  path="/login" component={Login}/>
+        <Route  path="/register" component={Login}/>
+        <Route  path="/login" component={Login_}/>
         <Route exact path="/">
           <Redirect to="/listCars" />
         </Route>

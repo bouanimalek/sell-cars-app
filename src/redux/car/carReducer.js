@@ -32,6 +32,7 @@ const carReducer = (state = initialState, action) => {
     return state;
 
     case DELETE_CAR:
+      console.log(action.payload)
       state.listCars.splice(action.payload, 1);
       localStorage.setItem("cars", JSON.stringify(state.listCars));
 

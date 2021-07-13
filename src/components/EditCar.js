@@ -10,7 +10,7 @@ const initialtState = {
       horsePower: "",
     },
   };
-
+ 
   const cars = JSON.parse(localStorage.getItem('cars') || '[]')
 
 export class EditCar extends Component {
